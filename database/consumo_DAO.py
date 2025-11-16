@@ -1,6 +1,5 @@
 from database.DB_connect import ConnessioneDB
 from model.consumo_DTO import Consumo
-
 """
     CONSUMO DAO
     Gestisce le operazioni di accesso alla tabella consumo.
@@ -35,6 +34,7 @@ class ConsumoDAO:
             print(f"Errore durante la query get_consumi: {e}")
             result = None
         finally:
+            #print(result)
             cursor.close()
             cnx.close()
 

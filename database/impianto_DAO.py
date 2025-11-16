@@ -15,7 +15,6 @@ class ImpiantoDAO:
         """
         cnx = ConnessioneDB.get_connection()
         result = []
-
         if cnx is None:
             print("❌ Errore di connessione al database.")
             return None
@@ -29,13 +28,20 @@ class ImpiantoDAO:
                     id=row["id"],
                     nome=row["nome"],
                     indirizzo=row["indirizzo"],
+                    lista_consumi=[]                #inizializzo lista vuota
                 )
+
+                consumi = impianto.get_consumi()            #mi da lista consumi
+                impianto.lista_consumi = consumi            #dopo accedo ai consumi da questa lista dalla classe ImpiantoDTO
                 result.append(impianto)
+
+                #print(f"Impianto {impianto.nome},{len(impianto.lista_consumi)} consumi")
         except Exception as e:
             print(f"Errore durante la query get_consumi: {e}")
             result = None
         finally:
             cursor.close()
             cnx.close()
+
 
         return result

@@ -1,5 +1,6 @@
 from database.impianto_DAO import ImpiantoDAO
-
+from model.impianto_DTO import Impianto
+from datetime import datetime
 '''
     MODELLO:
     - Rappresenta la struttura dati
@@ -11,10 +12,8 @@ class Model:
     def __init__(self):
         self._impianti = None
         self.load_impianti()
-
         self.__sequenza_ottima = []
         self.__costo_ottimo = -1
-
     def load_impianti(self):
         """ Carica tutti gli impianti e li setta nella variabile self._impianti """
         self._impianti = ImpiantoDAO.get_impianti()
@@ -25,7 +24,11 @@ class Model:
         :param mese: Mese selezionato (un intero da 1 a 12)
         :return: lista di tuple --> (nome dell'impianto, media), es. (Impianto A, 123)
         """
-        # TODO
+        #mese = int(data_str.split("-")[1])
+        risultati = []
+        for imp in self._impianti:
+            break
+        return risultati
 
     def get_sequenza_ottima(self, mese:int):
         """
@@ -48,10 +51,19 @@ class Model:
         """ Implementa la ricorsione """
         # TODO
 
-    def __get_consumi_prima_settimana_mese(self, mese: int):
+    def get_consumi(self):
+        self._consumi = []  # Lista vuota
+        for impianto in self._impianti:
+            self._consumi.extend(impianto.get_consumi())        #aggiunge elemento per elemento della lista alla lista esterna
+        return self._consumi
+
+    def get_consumi_prima_settimana_mese(self, mese: int):
         """
         Restituisce i consumi dei primi 7 giorni del mese selezionato per ciascun impianto.
         :return: un dizionario: {id_impianto: [kwh_giorno1, ..., kwh_giorno7]}
         """
-        # TODO
+        risultati = []
+        for consumo in self._consumi:
+            print(consumo)
+            return None
 

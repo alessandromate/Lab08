@@ -13,7 +13,6 @@ def main(page: ft.Page):
     my_view.load_interface()
     my_model.get_consumi()
     print(my_model._consumi)
-    my_model.get_consumi_prima_settimana_mese(2)
 
 
 ft.app(target=main)

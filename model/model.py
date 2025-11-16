@@ -60,7 +60,7 @@ class Model:
     def get_consumi_prima_settimana_mese(self, mese: int):
         """
         Restituisce i consumi dei primi 7 giorni del mese selezionato per ciascun impianto.
-        :return: un dizionario: {id_impianto: [kwh_giorno1, ..., kwh_giorno7]}
+        :return: un dizionario: {id_impianto: [kwh_giorno1, .., kwh_giorno7]}
         """
         risultati = []
         for consumo in self._consumi:
